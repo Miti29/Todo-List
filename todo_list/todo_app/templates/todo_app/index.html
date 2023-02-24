@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% if object_list %}
+<h3>All my Lists</h3>
+{% endif %}
+<ul>
+    {% for todolist in object_list %}
+    <li>
+        <div role="button" 
+        onclick="location.href='{% url "list" todolist.id %}'">
+        {{todolist.title}}
+
+        </div>
+    </li>
+
+    <!-- If the list is empty, You have no lists will be rendered -->
+    {% empty %}
+    <h4>You have no lists</h4>
+    {% endfor %}
+</ul>
+{% endblock %}
